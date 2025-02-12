@@ -8,10 +8,10 @@ import "../src/MockUNI.sol";
 import "../src/MockUSDT.sol";
 import "../src/MockWETH.sol";
 import "../src/MockDAI.sol";
-import "../src/MockStakingAave.sol"; // USDC
-import "../src/MockStakingCardano.sol"; // WETH
-import "../src/MockStakingCompound.sol"; // USDT
-import "../src/MockStakingRenzo.sol"; // DAI
+import "../src/MockStakingAaveV3.sol"; // USDC
+import "../src/MockStakingStargateV3.sol"; // WETH
+import "../src/MockStakingCompoundV3.sol"; // USDT
+import "../src/MockStakingUsdxMoney.sol"; // DAI
 import "../src/MockStakingUniswap.sol"; // UNI
 
 contract DeployOptiFi is Script {
@@ -92,66 +92,66 @@ contract DeployOptiFi is Script {
             address(mockStakingUniswap)
         );
 
-        // Deploy MockStakingCompound with MockUSDT as staking token
+        // Deploy MockStakingCompoundV3 with MockUSDT as staking token
         fixedAPY = 15; // 15% APY
         durationInDays = 7; // 7 day staking period
         maxAmountStaked = 100_000 * 10 ** 6; // 50,000 MockUSDT max stake
 
-        MockStakingCompound mockStakingCompound = new MockStakingCompound(
+        MockStakingCompoundV3 mockStakingCompoundV3 = new MockStakingCompoundV3(
             address(mockUSDT),
             fixedAPY,
             durationInDays,
             maxAmountStaked
         );
         console2.log(
-            "MockStakingCompound deployed to:",
-            address(mockStakingCompound)
+            "MockStakingCompoundV3 deployed to:",
+            address(mockStakingCompoundV3)
         );
 
-        // Deploy MockStakingRenzo with MockDAI as staking token
+        // Deploy MockStakingUsdxMoney with MockDAI as staking token
         fixedAPY = 20; // 20% APY
         durationInDays = 14; // 14 day staking period
         maxAmountStaked = 100_000 * 10 ** 6; // 25,000 MockDAI max stake
 
-        MockStakingRenzo mockStakingRenzo = new MockStakingRenzo(
+        MockStakingUsdxMoney mockStakingUsdxMoney = new MockStakingUsdxMoney(
             address(mockDAI),
             fixedAPY,
             durationInDays,
             maxAmountStaked
         );
         console2.log(
-            "MockStakingRenzo deployed to:",
-            address(mockStakingRenzo)
+            "MockStakingUsdxMoney deployed to:",
+            address(mockStakingUsdxMoney)
         );
 
-        // Deploy MockStakingCardano with MockWETH as staking token
+        // Deploy MockStakingStargateV3 with MockWETH as staking token
         fixedAPY = 25; // 25% APY
         durationInDays = 30; // 30 day staking period
         maxAmountStaked = 100_000 * 10 ** 6; // 100,000 MockWETH max stake
 
-        MockStakingCardano mockStakingCardano = new MockStakingCardano(
+        MockStakingStargateV3 mockStakingStargateV3 = new MockStakingStargateV3(
             address(mockWETH),
             fixedAPY,
             durationInDays,
             maxAmountStaked
         );
         console2.log(
-            "MockStakingCardano deployed to:",
-            address(mockStakingCardano)
+            "MockStakingStargateV3 deployed to:",
+            address(mockStakingStargateV3)
         );
 
-        // Deploy MockStakingAave with MockUSDC as staking token
+        // Deploy MockStakingAaveV3 with MockUSDC as staking token
         fixedAPY = 30; // 30% APY
         durationInDays = 60; // 60 day staking period
         maxAmountStaked = 100_000 * 10 ** 6; // 100,000 MockUSDC max stake
 
-        MockStakingAave mockStakingAave = new MockStakingAave(
+        MockStakingAaveV3 mockStakingAaveV3 = new MockStakingAaveV3(
             address(mockUSDC),
             fixedAPY,
             durationInDays,
             maxAmountStaked
         );
-        console2.log("MockStakingAave deployed to:", address(mockStakingAave));
+        console2.log("MockStakingAaveV3 deployed to:", address(mockStakingAaveV3));
 
         vm.stopBroadcast();
     }
