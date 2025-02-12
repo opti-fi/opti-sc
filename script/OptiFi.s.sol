@@ -19,10 +19,10 @@ contract DeployOptiFi is Script {
         // Deployment addresses for Uniswap V3 SwapRouter on Base networks
         address routerAddress;
 
-        if (block.chainid == 8453) {
+        if (block.chainid == 421614) {
             // Base Mainnet
             routerAddress = 0x2626664c2603336E57B271c5C0b26F421741e481;
-        } else if (block.chainid == 84532) {
+        } else if (block.chainid == 421614) {
             // Base Sepolia
             routerAddress = 0x94cC0AaC535CCDB3C01d6787D6413C739ae12bc4;
         } else {

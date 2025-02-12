@@ -17,6 +17,7 @@ remappings = [
 [rpc_endpoints]
 base = "${BASE_MAINNET_RPC}"
 base_sepolia = "${BASE_SEPOLIA_RPC}"
+arbitrum_sepolia = "${ARBITRUM_SEPOLIA_RPC}"
 
 [etherscan]
 base = { key = "${ETHERSCAN_API_KEY}", url = "https://api.basescan.org/api" }
